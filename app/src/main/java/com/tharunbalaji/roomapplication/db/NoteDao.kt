@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 
-// Create, Read, Update, Delete
+// Archiecture + Fragments (Navigation)
 
 @Dao
 abstract class NoteDao {
