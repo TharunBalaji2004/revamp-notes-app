@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.tharunbalaji.roomapplication.R
 import com.tharunbalaji.roomapplication.databinding.FragmentEditBinding
 import com.tharunbalaji.roomapplication.db.Note
