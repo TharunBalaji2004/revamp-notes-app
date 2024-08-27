@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.tharunbalaji.roomapplication"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -61,6 +61,4 @@ dependencies {
     // Fragment Navigation
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.0")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.0")
-
-    implementation ("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.0")
 }

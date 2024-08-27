@@ -9,16 +9,20 @@ import com.tharunbalaji.roomapplication.R
 import com.tharunbalaji.roomapplication.db.Note
 
 class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    fun bind(note: Note) {
+    fun bind(note: Note, onClick: (Note) -> Unit) {
         val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
         val tvContent: TextView = itemView.findViewById(R.id.tv_content)
 
         tvTitle.text = note.title
         tvContent.text = note.content
+
+        itemView.setOnClickListener {
+            onClick(note)
+        }
     }
 }
 
-class NoteAdapter: RecyclerView.Adapter<NoteViewHolder>() {
+class NoteAdapter(val onClick: (Note) -> Unit): RecyclerView.Adapter<NoteViewHolder>() {
 
     private var notes: List<Note> = emptyList()
 
@@ -37,6 +41,6 @@ class NoteAdapter: RecyclerView.Adapter<NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        holder.bind(notes.get(position))
+        holder.bind(notes.get(position), onClick)
     }
 }

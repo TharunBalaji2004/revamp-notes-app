@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -39,7 +40,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        noteAdapter = NoteAdapter()
+        noteAdapter = NoteAdapter(onClick = { note ->
+            val bundle = bundleOf(
+                "id" to note.id,
+                "title" to note.title,
+                "content" to note.content
+            )
+            findNavController().navigate(R.id.action_homeFragment_to_editFragment, bundle)
+        })
 
         binding.rvNotes.adapter = noteAdapter
         binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)

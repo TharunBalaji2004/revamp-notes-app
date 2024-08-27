@@ -29,12 +29,25 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val id = arguments?.getInt("id")
+        val title = arguments?.getString("title")
+        val content = arguments?.getString("content")
+
+        binding.etTitle.setText(title)
+        binding.etContent.setText(content)
+        binding.btnCreate.text = if (id != null) "UPDATE NOTE" else binding.btnCreate.text
 
         binding.btnCreate.setOnClickListener {
             val title = binding.etTitle.text.toString()
             val content = binding.etContent.text.toString()
-            val note = Note(title = title, content = content)
-            noteViewModel.create(note)
+
+            if (id != null) {
+                val note = Note(id = id, title = title, content = content)
+                noteViewModel.update(note)
+            } else {
+                val note = Note(title = title, content = content)
+                noteViewModel.create(note)
+            }
 
             findNavController().popBackStack()
         }
